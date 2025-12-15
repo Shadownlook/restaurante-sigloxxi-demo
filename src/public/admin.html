@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel Administrador | Restaurante Siglo XXI</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <h1>Restaurante Siglo XXI</h1>
+    <button onclick="logout()">Cerrar sesión</button>
+  </header>
+
+  <main class="container">
+    <h2>Panel de Administración</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Gestión de Usuarios</h3>
+        <p>Crear, editar y eliminar usuarios del sistema.</p>
+        <button onclick="location.href='usuarios.html'">Administrar</button>
+      </div>
+
+      <div class="card">
+        <h3>Pedidos</h3>
+        <p>Visualizar todos los pedidos del restaurante.</p>
+        <button onclick="location.href='pedidos.html'">Ver pedidos</button>
+      </div>
+
+      <div class="card">
+        <h3>Bodega</h3>
+        <p>Control de stock e insumos.</p>
+        <button onclick="location.href='bodega.html'">Gestionar bodega</button>
+      </div>
+
+      <div class="card">
+        <h3>Finanzas</h3>
+        <p>Ingresos, egresos y reportes.</p>
+        <button onclick="location.href='finanzas.html'">Ver finanzas</button>
+      </div>
+      <div class="card">
+        <h3>Clientes</h3>
+        <p>Menu de cliente.</p>
+        <button onclick="location.href='cliente.html'">Menu</button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function logout() {
+      localStorage.removeItem('token')
+      window.location.href = '/login.html'
+    }
+  </script>
+
+</body>
+</html>

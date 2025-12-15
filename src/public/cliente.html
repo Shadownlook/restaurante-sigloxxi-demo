@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cliente | Restaurante Siglo XXI</title>
+  <link rel="stylesheet" href="cliente.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Restaurante Siglo XXI</h1>
+    <p>Panel Cliente</p>
+  </header>
+
+  <main>
+    <section class="pedido">
+      <h2>Crear Pedido</h2>
+
+      <label>Total del pedido ($)</label>
+      <input type="number" id="total" placeholder="Ej: 15000" />
+
+      <button onclick="crearPedido()">Enviar Pedido</button>
+
+      <p id="msg"></p>
+    </section>
+  </main>
+
+  <script src="cliente.js"></script>
+</body>
+</html>

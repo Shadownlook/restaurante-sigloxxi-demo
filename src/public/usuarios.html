@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Usuarios | Admin</title>
+  <link rel="stylesheet" href="usuarios.css">
+</head>
+<body>
+
+<h2>Gestión de Usuarios</h2>
+
+<form id="formUsuario">
+  <input type="email" placeholder="Correo" required>
+  <input type="password" placeholder="Contraseña" required>
+  <select>
+    <option value="admin">Administrador</option>
+    <option value="cliente">Cliente</option>
+    <option value="cocina">Cocina</option>
+    <option value="bodega">Bodega</option>
+    <option value="finanzas">Finanzas</option>
+  </select>
+  <button type="submit">Crear Usuario</button>
+</form>
+
+<ul id="listaUsuarios">
+  <li>admin@sigloxxi.cl - ADMIN <button>Eliminar</button></li>
+</ul>
+
+</body>
+</html>

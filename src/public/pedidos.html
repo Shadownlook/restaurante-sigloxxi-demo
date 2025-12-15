@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+  <link rel="stylesheet" href="cocina.css">
+<head>
+  <meta charset="UTF-8">
+  <title>Cocina - Pedidos</title>
+</head>
+<body>
+
+<h2>Pedidos Pendientes</h2>
+
+<ul id="lista"></ul>
+
+<!-- 👇 EL SCRIPT VA AQUÍ -->
+<script>
+async function cargarPedidos() {
+  const token = localStorage.getItem('token')
+
+  if (!token) {
+    alert('Sesión expirada. Inicie sesión nuevamente.')
+    window.location.href = '/login.html'
+    return
+  }
+
+  const res = await fetch('/kitchen/orders', {
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  })
+
+  if (res.status === 401) {
+    alert('Sesión inválida.')
+    localStorage.removeItem('token')
+    window.location.href = '/login.html'
+    return
+  }
+
+  if (res.status === 403) {
+    alert('Acceso denegado. Rol incorrecto.')
+    return
+  }
+
+  const pedidos = await res.json()
+
+  const lista = document.getElementById('lista')
+  if (!lista) return
+
+  lista.innerHTML = ''
+
+  if (pedidos.length === 0) {
+    lista.innerHTML = '<li>No hay pedidos pendientes</li>'
+    return
+  }
+
+  pedidos.forEach(p => {
+    const li = document.createElement('li')
+    li.innerHTML = `
+      Pedido #${p.id} - $${p.total}
+      <button onclick="marcarListo(${p.id})">Listo</button>
+    `
+    lista.appendChild(li)
+  })
+}
+
+async function marcarListo(id) {
+  const token = localStorage.getItem('token')
+
+  await fetch('/kitchen/orders/' + id, {
+    method: 'PUT',
+    headers: {
+      'Authorization': 'Bearer ' + token
+    }
+  })
+
+  cargarPedidos()
+}
+
+document.addEventListener('DOMContentLoaded', cargarPedidos)
+</script>
+
+</body>
+</html>

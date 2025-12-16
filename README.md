@@ -69,7 +69,6 @@ Las interfaces fueron desarrolladas aplicando principios de:
 ---
 
 ## 🗂️ Estructura del Proyecto
-
 restaurante-sigloxxi/
 ├── src/
 │ ├── server.ts
